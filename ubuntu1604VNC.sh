@@ -35,9 +35,11 @@ ExecStart=/usr/bin/x11vnc -auth guess -forever -loop -noxdamage -repeat -rfbauth
 WantedBy=multi-user.target
 EOF
 
-# 步骤 4 - 配置和启动服务
+# 步骤 4 - 配配置防火墙端口，配置和启动服务
 # ################################################################ 
 
+echo "Configure firewall"
+sudo ufw allow 5900
 echo "Configure Services"
 sudo systemctl enable x11vnc.service
 sudo systemctl daemon-reload
